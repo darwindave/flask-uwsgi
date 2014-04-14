@@ -11,14 +11,31 @@ Setting up the Python environment
 ---
 First, install the following packages.
     
-    sudo apt-get install build-essential python-dev python-pip
+    sudo apt-get install build-essential python-dev python-pip git
 
 `build-essential` and `python-dev` are used to compile C extensions. Pip is used to install system commands.
+
+or if you are using Redhat or Amazon Linux /TODO Verify
+
+	sudo yum groupinstall “Development Tools”
+	
+	sudo yum install git
+	
+	sudo curl -o /tmp/ez_setup.py https://sources.rhodecode.com/setuptools/raw/bootstrap/ez_setup.py 
+
+	sudo /usr/bin/python27 /tmp/ez_setup.py 
+	sudo /usr/bin/easy_install-2.7 pip 
 
 Next, install the following Pip packages.
 
     sudo pip install virtualenv uwsgi 
 
+Next, download the configuration using 
+
+	cd /var/www/
+	
+	git clone https://github.com/mking/flask-uwsgi.git
+	
 Next, create the Virtualenv for this tutorial.
 
     cd flask-uwsgi
@@ -35,6 +52,10 @@ You should be able to visit http://ubuntu.local:8080.
 Creating an Upstart service for uWSGI
 ---
 First, set up the directories the service will use.
+
+	# Add group www-data user www-data
+	sudo groupadd www-data
+	sudo adduser www-data --system --no-create-home -g www-data
 
     # Create a directory for the UNIX sockets
     sudo mkdir /var/run/flask-uwsgi
