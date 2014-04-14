@@ -76,7 +76,10 @@ Next, create the init script.
 Next, create the config file.
 
 - Copy the config template to /etc/flask-uwsgi/flask-uwsgi.ini.
-- Set uid and gid to the numeric uid and gid for www-data.
+- Set uid and gid to the numeric uid and gid for www-data. Use the following commands to get the ids
+
+	sudo id -u www-data
+	sudo id -g www-data
 
 Next, start uWSGI.
 
