@@ -71,15 +71,19 @@ First, set up the directories the service will use.
 Next, create the init script.
 
 - Copy the init script template to /etc/init/flask-uwsgi.conf.
-- Replace /path/to/flask-uwsgi with the path to this directory.
+
+	sudo cp /var/www/flask-uwsgi/flask-uwsgi.conf /etc/init/flask-uwsgi.conf
 
 Next, create the config file.
 
-- Copy the config template to /etc/flask-uwsgi/flask-uwsgi.ini.
-- Set uid and gid to the numeric uid and gid for www-data. Use the following commands to get the ids
+- Open /var/www/flask-uwsgi/flask-uwsgi.ini and set uid and gid to the numeric uid and gid for www-data. Use the following commands to get the ids
 
 	sudo id -u www-data
 	sudo id -g www-data
+
+- Copy the config template to /etc/flask-uwsgi/flask-uwsgi.ini.
+
+	sudo cp /var/www/flask-uwsgi/flask-uwsgi.ini /etc/init/flask-uwsgi.ini
 
 Next, start uWSGI.
 
